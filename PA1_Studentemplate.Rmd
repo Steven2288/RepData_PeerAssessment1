@@ -1,10 +1,10 @@
 
 #  Reproducible Research Project #1
-#  This assignment makes use of data from a personal activity monitoring device. 
+#  This assignment makes use of data from a personel activity monitoring device. 
 #  This device collects data at 5 minute intervals through out the day. 
-#  Data collected during the months of October and November,, 2012 
+#  Data collected during the months of October and November, 2012 
 
-#  setwd("/Users/sstone25/datasciencecoursera/Reproducible_Research")
+#  setwd("/Users/sstone25/datasciencecoursera/Reproducible Research")
 
 #  Part 1 - Loading and preprocessing the data
 #  =============================================
