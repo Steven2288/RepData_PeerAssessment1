@@ -24,7 +24,6 @@ unzip("activity.zip")
 
 ```r
 df <-read.csv("activity.csv",  header = TRUE, sep = ",")
-View(df)
 ```
 
 ###  What is mean total number of steps taken per day?
@@ -32,13 +31,12 @@ View(df)
 
 ```r
 TotalSteps <- aggregate(df$steps, list(Date = df$date), FUN = "sum")
-a <- sum(TotalSteps$steps)
 ```
 *  Calculate and report the mean of the total number of steps taken per day
 
 ```r
 stepsMean <- mean(TotalSteps$x, na.rm=TRUE)
-print(stepsMean)
+stepsMean
 ```
 
 ```
@@ -70,8 +68,6 @@ stepsMedian
 
 ```r
 Interval_Ave_Steps <- aggregate(steps ~ interval, data = df, FUN = mean)
-View(Interval_Ave_Steps)
-
 library(ggplot2)
 ggplot(Interval_Ave_Steps, aes(x = interval, y = steps)) + geom_line(color = "red") + labs(title = "Interval vs Steps")
 ```
@@ -136,7 +132,6 @@ for (i in 1:nrow(a)) {
         a$steps[i] <- sample(1:800, 1, replace=T)
     }
 }
-View(a)
 ```
 *The strategy is to replace the NA's with a random number between 1 and 400
 #
@@ -155,7 +150,7 @@ stepsMeanNew
 ```
 
 ```
-## [1] 85.16211
+## [1] 84.23748
 ```
 *  The mean total number of steps taken per day is 84.40631
 #
@@ -180,7 +175,7 @@ stepsMeanNew
 ```
 
 ```
-## [1] 85.16211
+## [1] 84.23748
 ```
 *the mean of the total number of steps for the second part is 84.40631
 
@@ -196,19 +191,14 @@ stepsMeanNew
 ```r
 library(lubridate)
 tempDate <- a$date
-View(tempDate)
 #
 newDate <- wday(tempDate, label = T)
-View(newDate)
 #
 a[,"newDate"] <- newDate
-View(a)
 #
 variableWeekend <- filter(a, newDate == "Sat" | newDate == "Sun") 
-View(variableWeekend)
 
 variableWeekdays <- filter(a, newDate == "Mon" | newDate == "Tue" | newDate == "Wed" | newDate == "Thurs" | newDate == "Fri") 
-View(variableWeekdays)
 ```
 #
 ###  Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval #  (x-axis) and the average number of steps taken, averaged across all weekday days or weekend  days (y-axis). 
